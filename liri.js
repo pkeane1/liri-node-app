@@ -35,8 +35,25 @@ break;
 
 
 function concertThis(input2) {
-console.log("it works!")
-} 
+// console.log("it works!")
+var url = "https://rest.bandsintown.com/artists/" + input2 + "/events?app_id=codingbootcamp";
+axios.get(url)
+.then(function(response) {   
+
+  for (var i = 0; i < response.data.length; i++) {
+
+
+    var concertResults = 
+        "--------------------------------------------------------------------" +
+            "\nVenue Name: " + response.data[i].venue.name + 
+            "\nVenue Location: " + response.data[i].venue.city +
+            "\nDate of the Event: " + response.data[i].datatime;
+    console.log(concertResults);
+
+
+  };
+}); 
+};
 
 spotifySong = function(input2) {
 
