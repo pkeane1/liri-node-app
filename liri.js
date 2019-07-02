@@ -45,9 +45,9 @@ axios.get(url)
 
     var concertResults = 
         "--------------------------------------------------------------------" +
-            "\nVenue Name: " + response.data[i].venue.name + 
-            "\nVenue Location: " + response.data[i].venue.city +
-            "\nDate of the Event: " + response.data[i].datatime;
+            "\n Venue Name: " + response.data[i].venue.name + 
+            "\n Venue Location: " + response.data[i].venue.city +
+            "\n Date of the Event: " + response.data[i].datatime;
     console.log(concertResults);
 
 
@@ -55,16 +55,34 @@ axios.get(url)
 }); 
 };
 
-spotifySong = function(input2) {
-
-
+function spotifySong(input2) {
+    // spotify.search({ type: 'track', query: input2 }, function(err, data) {
+    //     if (err) {
+    //       return console.log('Error occurred: ' + err);
+    //     }
+       
+    //   console.log(data); 
+    //   });
+    
 }
 
 
-movieThis = function(input2){
+function movieThis(input2){
+    axios.get("https://www.omdbapi.com/?t=" + input2 + "&y=&plot=short&apikey=trilogy")
+    .then(function(response) {
+            var movieResults = 
+                "--------------------------------------------------------------------" +
+                    "\n Movie Title: " + response.data.Title + 
+                    "\n Year of Release: " + response.data.Year +
+                    "\n IMDB Rating: " + response.data.imdbRating +
+                    "\n Rotten Tomatoes Rating: " + response.data.Ratings[1].Value +
+                    "\n Country Produced: " + response.data.Country +
+                    "\n Language: " + response.data.Language +
+                    "\n Plot: " + response.data.Plot +
+                    "\n Actors/Actresses: " + response.data.Actors;
+            console.log(movieResults);
 
-
-
+});
 }
 
 function doIt(input2) {
